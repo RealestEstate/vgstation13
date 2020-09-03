@@ -2443,7 +2443,7 @@
 		return 1
 
 	M.heal_organ_damage(0, 2 * REM)
-	
+
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = DERMALINE
@@ -2910,7 +2910,7 @@
 
 	if(..())
 		return 1
-	
+
 	 M.heal_organ_damage(4 * REM, -1 * REM) //heal 2 brute, cause 0.5 burn
 
 /datum/reagent/hyperzine
@@ -3429,7 +3429,7 @@
 /datum/reagent/methylin/on_overdose(var/mob/living/M)
 	M.adjustToxLoss(1)
 	M.adjustBrainLoss(1)
-	
+
 /datum/reagent/bicarodyne
 	name = "Bicarodyne"
 	id = BICARODYNE
@@ -3895,7 +3895,7 @@
 	density = 1.44
 	specheatcap = 60
 	overdose_am = 5
-	
+
 	var/on_a_diet
 	var/oldmetabolism
 
@@ -3903,10 +3903,10 @@
 
 	if(..())
 		return 1
-	
+
 	if(prob(5))
 		M.adjustToxLoss(1)
-	
+
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!on_a_diet)
@@ -3915,7 +3915,7 @@
 			H.calorie_burn_rate += H.calorie_burn_rate * 3
 		if(prob(8))
 			H.vomit(0,1)
-			
+
 /datum/reagent/dietine/reagent_deleted()
 	if(ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
@@ -3925,7 +3925,7 @@
 /datum/reagent/dietine/on_overdose(var/mob/living/M)
 	M.adjustToxLoss(1)
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = M	
+		var/mob/living/carbon/human/H = M
 		H.vomit(0,1)
 
 /datum/reagent/soysauce
@@ -3986,7 +3986,7 @@
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#FFFACD" //LEMONCHIFFON
-	
+
 /datum/reagent/drink/gatormix
 	name = "Gator Mix"
 	id = GATORMIX
@@ -3999,15 +3999,15 @@
 	adj_sleepy = -5
 	adj_temp = 10
 	overdose_am = 50
-	
+
 /datum/reagent/gatormix/on_mob_life(var/mob/living/M)
 	if(..())
 		return 1
-	
+
 	if(ishuman(M) && prob(20))
 		var/mob/living/carbon/human/H = M
 		H.Jitter(5)
-		
+
 /datum/reagent/gatormix/on_overdose(var/mob/living/M)
 
 	if(ishuman(M) && prob(5))
@@ -6020,7 +6020,7 @@
 	id = MAGICADELUXE
 	description = "Makes you feel enchanted until the aftertaste hits you."
 	color = "#009933" //rgb(0, 153, 51)
-	
+
 /datum/reagent/ethanol/magicadeluxe/on_mob_life(var/mob/living/M)
 	if(..())
 		return 1
@@ -6050,14 +6050,14 @@
 		playsound(M,'sound/effects/summon_guns.ogg', 50, 1)
 		for (var/spell/majik in fake_spells)
 			M.add_spell(majik)
-		
+
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			var/spell/thisisdumb = new /spell/targeted/equip_item/robesummon
 			H.add_spell(thisisdumb)
 			thisisdumb.charge_type = Sp_CHARGES
 			thisisdumb.charge_counter = 1
-			thisisdumb.charge_max = 1		
+			thisisdumb.charge_max = 1
 			H.cast_spell(thisisdumb,list(H))
 		holder.remove_reagent(MAGICADELUXE,5)
 
@@ -6578,7 +6578,7 @@
 	description = "Triple sec, Cinnamon Whisky, and Tequila, eugh. Less a cocktail more than throwing whatever's on the shelf in a glass."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#f0133c" //rgb: 240, 19, 60
-	
+
 /datum/reagent/ethanol/deadrum/magica
 	name = "Magica"
 	id = MAGICA
@@ -7995,8 +7995,10 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 
 	if(method == TOUCH)
 		if(issilicon(M))//borgs are hurt on touch by this chem
-			M.adjustFireLoss(5*REM)
-			M.adjustBruteLoss(5*REM)
+			M.adjustFireLoss(10)
+			M.adjustBruteLoss(10)
+
+//todo: exosuit and pod damage
 
 
 /datum/reagent/diabeetusol
