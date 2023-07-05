@@ -1,0 +1,25 @@
+<!--
+Used In File(s): \code\game\objects\items
+-->
+<div class="item">
+   <div class="itemLabel">
+     <b>Circuitboard: </b>:
+  </div>
+  <div class="itemContent">
+     {{:data.circuitName}}
+  </div>
+<h3>Settings</h3>
+{{if !data.deployReady}}
+	This unit is currently <span class="bad">not ready to deploy.</span>
+	{{:helper.link('Activate Deploy Mode.', 'power', {'toggle_deploy': '1'})}}
+{{else}}
+   This unit is currently <span class="good">ready to deploy.</span>
+   {{:helper.link('Deactivate Deploy Mode.', 'power', {'toggle_deploy': '1'})}}
+   <div class='notice'>
+      Select adjacent location for deployment
+   </div>
+{{/if}}
+
+<div class="item">
+   <span class='average'> *You can also deploy and undeploy this laptop at any point with Alt-click</span>
+</div>
